@@ -11,7 +11,7 @@ package.domain = org.ace
 # (str) Source code directory where main.py sits
 source.dir = .
 
-# (list) Source files to include (let's catch everything)
+# (list) Source files to include
 source.include_exts = py,png,jpg,kv,atlas
 
 # (str) Application version
@@ -29,19 +29,16 @@ fullscreen = 0
 # (list) Permissions
 android.permissions = INTERNET
 
-# (int) Target Android API
-android.api = 34
+# (int) Target Android API (Stable 2026 build match)
+android.api = 33
 
 # (int) Minimum API required
 android.minapi = 21
 
-# (str) Android NDK version to fetch
-android.ndk = 25b
+# (str) Let buildozer pick the correct NDK automatically
+android.ndk_path =
 
-# (list) Architecture to build for
-android.archs = arm64-v8a
-
-# (bool) Auto-accept licenses (crucial for GitHub Actions!)
+# (bool) Auto-accept licenses (Crucial for automation platforms)
 android.accept_sdk_license = True
 
 # (bool) Allow backup
