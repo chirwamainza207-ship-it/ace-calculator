@@ -68,3 +68,5 @@ class AcesCalculatorApp(App):
 
 if __name__ == "__main__":
     AcesCalculatorApp().run()
+if __name__ == "__main__":
+    AcesCalculatorApp().run()
