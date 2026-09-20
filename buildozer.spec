@@ -10,12 +10,12 @@ orientation = portrait
 fullscreen = 0
 android.permissions = INTERNET
 
-# Stable compiler target versions
-android.api = 33
-android.minapi = 21
+# Modernized stable API targets to fix the OpenSSL crash
+android.api = 34
+android.minapi = 24
 android.ndk_path =
 android.accept_sdk_license = True
 android.allow_backup = True
 
-# Standard logging level to read the exact error output line
-log_level = 2
+# Kept short and quiet as requested!
+log_level = 1
