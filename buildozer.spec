@@ -43,3 +43,5 @@ android.accept_sdk_license = True
 
 # (bool) Allow backup
 android.allow_backup = True
+# (int) Log level (0 = error only, 1 = info, 2 = debug)
+log_level = 1
