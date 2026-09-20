@@ -1,29 +1,34 @@
-name: Build Android APK
-on: [push, workflow_dispatch]
+
+name: Build Android APK with Buildozer
+
+on:
+  push:
+    branches: [ "main" ]
+  workflow_dispatch:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
+
     steps:
-      - uses: actions/checkout@v4
+    - name: Checkout Cloud Repository
+      uses: actions/checkout@v4
 
-      - name: Set up Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: '3.11'
+    - name: Get Buildozer Cache
+      uses: actions/cache@v4
+      with:
+        path: ./.buildozer
+        key: ${{ runner.os }}-buildozer-${{ hashFiles('**/buildozer.spec') }}
 
-      - name: Install Buildozer Dependencies
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y libsqlite3-dev lld libffi-dev ccache
-          pip install --upgrade pip
-          pip install buildozer cython kivy
+    - name: Build with Buildozer Action
+      uses: ArtemGovorov/buildozer-action@v1
+      id: buildozer
+      with:
+        workdir: .
+        buildozer_version: master
 
-      - name: Build with Buildozer
-        run: buildozer android debug
-
-      - name: Upload APK Artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: AcesCalculatorApp
-          path: bin/*.apk
+    - name: Upload Finished APK Artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: AceCalculator-APK
+        path: ${{ steps.buildozer.outputs.filename }}
