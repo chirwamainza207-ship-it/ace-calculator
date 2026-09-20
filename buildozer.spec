@@ -7,22 +7,25 @@ source.dir = .
 source.include_exts = py,png,jpg,kv,atlas
 version = 1.0
 
-# 1. Fixed requirements (removed hostpython3 which causes modern conflicts)
-requirements = python3, kivy==2.3.1
-
 orientation = portrait
 fullscreen = 0
 android.permissions = INTERNET
 
-# 2. Modernized stable API targets to fix the OpenSSL crash
+# Modernized stable API targets
 android.api = 34
 android.minapi = 24
 android.ndk_path = 
 android.accept_sdk_license = True
 android.allow_backup = True
 
-# 3. Explicitly target ONLY ONE architecture to stop the 20-minute timeout
+# Target only modern 64-bit architecture to prevent runner timeout
 android.archs = arm64-v8a
 
-# 4. CRITICAL: Turned verbosity BACK ON so we can see errors if it fails
+# Set verbosity level to show errors clearly
 log_level = 2
+
+# Clean requirements pinning compatible packages
+requirements = python3, kivy==2.3.1, cython==3.0.11
+
+# Force python-for-android to use updated recipes
+p4a.branch = master
