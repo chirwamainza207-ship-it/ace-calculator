@@ -4,7 +4,7 @@ from kivy.uix.gridlayout import GridLayout
 from kivy.uix.button import Button
 from kivy.uix.textinput import TextInput
 
-class AcesCalculatorApp(App):
+class MainApp(App):
     def build(self):
         self.operators = ["+", "-", "*", "/"]
         self.last_was_operator = None
@@ -67,6 +67,4 @@ class AcesCalculatorApp(App):
                 self.solution.text = "Error"
 
 if __name__ == "__main__":
-    AcesCalculatorApp().run()
-if __name__ == "__main__":
-    AcesCalculatorApp().run()
+    MainApp().run()
