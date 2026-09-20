@@ -17,5 +17,5 @@ android.ndk_path =
 android.accept_sdk_license = True
 android.allow_backup = True
 
-# Kept short and quiet as requested!
+# Kept short and quiet so it doesn't hit log limits!
 log_level = 1
